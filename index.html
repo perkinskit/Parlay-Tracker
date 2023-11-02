@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <h1>Parlay Tracker</h1>
+        <form id="yourPicks">
+            <label for="week">1. Choose a week:</label>
+            <select id="week" name ="week">
+                <option value="1">1 (9/10)</option>
+                <option value="2">2 (9/17)</option>
+                <option value="3">3 (9/24)</option>
+                <option value="4">4 (10/1)</option>
+                <option value="5">5 (10/8)</option>
+                <option value="6">6 (10/15)</option>
+                <option value="7">7 (10/22)</option>
+                <option value="8">8 (10/29)</option>
+                <option value="9">9 (11/5)</option>
+                <option value="10">10 (11/12)</option>
+                <option value="11">11 (11/19)</option>
+                <option value="12">12 (11/26)</option>
+                <option value="13">13 (12/3)</option>
+                <option value="14">14 (12/10)</option>
+                <option value="15">15 (12/17)</option>
+                <option value="16">16 (12/24)</option>
+                <option value="17">17 (12/31)</option>
+                <option value="18">18 (1/7)</option>
+            </select>
+            <div id="team-picker"></div>
+            <button id="sub-picks">Submit</button>
+        </form>
+        <div id="chosenWinners"></div>
+        <div id="refresh-scores-cont" class="hidden"><button id="refresh-scores">Refresh Scores</button></div>
+        <div id="yourGames"></div>
+        <button id="clear-picks">Clear All Selections</button>
+        <script src="index.js" type="module"></script>
+    </body>
+</html>

@@ -8,13 +8,13 @@ body {
 #yourPicks{
     max-width: 500px;
     margin: auto auto;
-    font-size:2em;
+    font-size:1.5em;
 }
 
 input[type=checkbox]{
-    width: 2em;
+    width: 1.5em;
     border: 1px solid #000;
-    height: 2em;
+    height: 1.5em;
     margin:0 !important;
 }
 
@@ -100,7 +100,7 @@ button:hover{
 }
 
 #sub-picks{
-    font-size: 0.5em;
+    font-size: 0.66em;
 }
 
 button:active{

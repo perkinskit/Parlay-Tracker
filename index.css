@@ -129,14 +129,6 @@ button:active{
     display:block;
 }
 
-/* Desktop */
-@media only screen and (min-width: 500px) {
-    .teamIDout{
-        display:flex;
-        flex-direction: row;
-        align-items: center;
-    }
-}
 /* Mobile */
 
 .teamIDout{
@@ -146,3 +138,14 @@ button:active{
 }
 
 .team2 .teamIDout{flex-direction: column-reverse;}
+
+/* Desktop */
+
+@media only screen and (min-width: 500px) {
+    .teamIDout{
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .team2 .teamIDout{flex-direction: row;}
+}

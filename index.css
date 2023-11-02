@@ -2,6 +2,7 @@ body {
     margin: 0;
     font-family: arial;
     box-sizing:border-box;
+    padding: 20px;
 }
 
 #yourPicks{

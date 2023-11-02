@@ -123,14 +123,18 @@ function renderGames(){
         gameStr += `
              <div class="game">
                 <div class="team1" style="background-color:${game.team1[2]};color:${game.team1[3]};">
-                    <div class="team1logo"><img src="${game.team1[4]}"/></div>
-                    <span class="team1name">${game.team1[1]}</span>
+                    <div class="teamIDout">
+                        <div class="team1logo"><img src="${game.team1[4]}"/></div>
+                        <span class="team1name">${game.team1[1]}</span>
+                    </div>
                     <div class="score-out"><span class="score1">${game.team1[5]}</span></div>
                 </div>
                 <div class="team2" style="background-color:${game.team2[2]};color:${game.team2[3]};">
-                    <div class="score-out"><span class="score2">${game.team2[5]}</span></div>
-                    <span class="team2name">${game.team2[1]}</span>
-                    <div class="team2logo"><img src="${game.team2[4]}"/></div>
+                        <div class="score-out"><span class="score2">${game.team2[5]}</span></div>
+                        <div class="teamIDout">
+                            <span class="team2name">${game.team2[1]}</span>
+                            <div class="team2logo"><img src="${game.team2[4]}"/></div>
+                        </div>
                 </div>
                 <div class="details">
                     <span class="final">FINAL</span>

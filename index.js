@@ -115,9 +115,9 @@ function renderGames(){
     let detailsStr =''
     for (let game of games){
         if(game.completed){
-            detailsStr += `<span class="final">FINAL</span>`
+            detailsStr = `<span class="final">FINAL</span>`
         } else {
-            gameStr += `<span class="clock">${game.displayClock}</span>
+            detailsStr = `<span class="clock">${game.displayClock}</span>
                         <span class="period">${game.period}</span>`
         }
         gameStr += `
@@ -137,7 +137,7 @@ function renderGames(){
                         </div>
                 </div>
                 <div class="details">
-                    <span class="final">FINAL</span>
+                    ${detailsStr}
                 </div>
                 <div class="tracking ${game.betStateClass}"></div>
              </div>

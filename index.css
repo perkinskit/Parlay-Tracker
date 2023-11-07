@@ -149,3 +149,8 @@ button:active{
     }
     .team2 .teamIDout{flex-direction: row;}
 }
+
+.chosen-team{
+    border: 4px solid yellow;
+    box-shadow: 0 2px 4px black;
+}

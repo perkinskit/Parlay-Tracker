@@ -113,6 +113,9 @@ function grabGames(week,teams){
 function renderGames(){
     let gameStr =''
     let detailsStr =''
+    let team1class =''
+    let team2class =''
+
     for (let game of games){
         if(game.completed){
             detailsStr = `<span class="final">FINAL</span>`
@@ -120,16 +123,30 @@ function renderGames(){
             detailsStr = `<span class="clock">${game.displayClock}</span>
                         <span class="period">${game.period}</span>`
         }
+
+        console.log(game.team1[0], game.chosenTeam, game.team1[0] === game.chosenTeam)
+
+        if (game.team1[0] === game.chosenTeam){
+            team1class = "team1 chosen-team"
+            team2class = "team2"
+        }
+        else if (game.team2[0] === game.chosenTeam){
+            team2class = "team2 chosen-team"
+            team1class = "team1"
+        }
+
+        console.log(team1class, team2class)
+
         gameStr += `
              <div class="game">
-                <div class="team1" style="background-color:${game.team1[2]};color:${game.team1[3]};">
+                <div class="${team1class}" style="background-color:${game.team1[2]};color:${game.team1[3]};">
                     <div class="teamIDout">
                         <div class="team1logo"><img src="${game.team1[4]}"/></div>
                         <span class="team1name">${game.team1[1]}</span>
                     </div>
                     <div class="score-out"><span class="score1">${game.team1[5]}</span></div>
                 </div>
-                <div class="team2" style="background-color:${game.team2[2]};color:${game.team2[3]};">
+                <div class="${team2class}" style="background-color:${game.team2[2]};color:${game.team2[3]};">
                         <div class="score-out"><span class="score2">${game.team2[5]}</span></div>
                         <div class="teamIDout">
                             <span class="team2name">${game.team2[1]}</span>

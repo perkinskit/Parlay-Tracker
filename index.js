@@ -1,12 +1,14 @@
 import { allTeams } from "./allTeams.js"
 
 let games = []
-let chosenList =[]
-let chosenWeek
+let chosenList = []
+//let chosenWeek
+let overallStatusArr = []
 
 const weekPicker = document.getElementById("week")
 const teamPicker = document.getElementById("team-picker")
 const yourGames = document.getElementById("yourGames")
+const statusDiv = document.getElementById("status-summary")
 const refreshButtonCont = document.getElementById("refresh-scores-cont")
 
 // In order, 0_Lost 1_losing-far 2_losing-close 3_winning-close 4_winning-far 5_Won
@@ -101,6 +103,7 @@ function grabGames(week,teams){
                         displayClock: events[i].competitions[0].status.displayClock,
                         period: events[i].competitions[0].status.period,
                         chosenTeam: myChosenTeam,
+                        combinedState: combinedState,
                         betStateClass: gameStateClassArr[combinedState]
                     })
                 }
@@ -115,16 +118,18 @@ function renderGames(){
     let detailsStr =''
     let team1class =''
     let team2class =''
+    let statusStr = ''
 
     for (let game of games){
+        
+        overallStatusArr.push(game.combinedState)
+
         if(game.completed){
             detailsStr = `<span class="final">FINAL</span>`
         } else {
             detailsStr = `<span class="clock">${game.displayClock}</span>
                         <span class="period">${game.period}</span>`
         }
-
-        console.log(game.team1[0], game.chosenTeam, game.team1[0] === game.chosenTeam)
 
         if (game.team1[0] === game.chosenTeam){
             team1class = "team1 chosen-team"
@@ -134,8 +139,6 @@ function renderGames(){
             team2class = "team2 chosen-team"
             team1class = "team1"
         }
-
-        console.log(team1class, team2class)
 
         gameStr += `
              <div class="game">
@@ -161,6 +164,38 @@ function renderGames(){
             `
     }
     yourGames.innerHTML = gameStr
+    
+    const transformedStatusArray = [0,0,0,0,0,0]
+
+    for(let status of overallStatusArr){
+        if (status === 0){
+            transformedStatusArray[0] ++
+        }
+        if (status === 1){
+            transformedStatusArray[1] ++
+        }
+        if (status === 2){
+            transformedStatusArray[2] ++
+        }
+        if (status === 3){
+            transformedStatusArray[3] ++
+        }
+        if (status === 4){
+            transformedStatusArray[4] ++
+        }
+        if (status === 5){
+            transformedStatusArray[5] ++
+        }
+    }
+
+    if (transformedStatusArray[0]){statusStr += `<span class="sp-red">You have lost ${transformedStatusArray[0]} games</span><br/>`}
+    if (transformedStatusArray[1]){statusStr += `<span class="sp-redorange">You are losing ${transformedStatusArray[1]} games by more than one score</span><br/>`}
+    if (transformedStatusArray[2]){statusStr += `<span class="sp-orange">You are losing ${transformedStatusArray[2]} games by less than one score</span><br/>`}
+    if (transformedStatusArray[3]){statusStr += `<span class="sp-yellow">You are tied or winning ${transformedStatusArray[3]} games by less than one score</span><br/>`}
+    if (transformedStatusArray[4]){statusStr += `<span class="sp-yellowgreen">You are winning ${transformedStatusArray[4]} games by more than one score</span><br/>`}
+    if (transformedStatusArray[5]){statusStr += `<span class="sp-green">You have won ${transformedStatusArray[5]} games</span><br/>`}
+
+    statusDiv.innerHTML = statusStr
 }
 
 fillTeams()

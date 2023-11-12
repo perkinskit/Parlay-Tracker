@@ -119,6 +119,7 @@ function renderGames(){
     let team1class =''
     let team2class =''
     let statusStr = ''
+    overallStatusArr = []
 
     for (let game of games){
         

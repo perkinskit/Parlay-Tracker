@@ -94,7 +94,7 @@ function grabGames(week,teams){
                     let myBetStateF = (events[i].competitions[0].status.type.completed && chosenTeamArr[6]) ? 5 : (events[i].competitions[0].status.type.completed) ? 0 : "tbd"
                     let scoreDiff = chosenTeamArr[5] - otherTeamArr[5]
                     let myBetState = (scoreDiff >= 0) ? "winning" : "losing"
-                    let gameState = (!events[i].competitions[0].status.type.completed && Math.abs(scoreDiff < 9)) ? "close" : "far"
+                    let gameState = (!events[i].competitions[0].status.type.completed && Math.abs(scoreDiff) < 9) ? "close" : "far"
                     let combinedState = (myBetStateF != "tbd") ? myBetStateF : (myBetState === "winning" && gameState === "close") ? 3 : (myBetState === "winning") ? 4 : (myBetState === "losing" && gameState === "close") ? 2 : 1
                     games.push({
                         team1: team1arr,
